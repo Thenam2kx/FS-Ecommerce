@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply min-h-screen font-roboto bg-[#f5f5fa];
+  }
+}
+
+@layer components { 
+  aside {
+    scrollbar-width: none;
+  }
+
+  .cssText {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    align-self: stretch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

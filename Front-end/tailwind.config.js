@@ -7,7 +7,11 @@ export default {
     './components/**/*.{html,js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        roboto: ['Inter', 'sans-serif']
+      }
+    }
   },
   darkMode: 'class',
   plugins: [
