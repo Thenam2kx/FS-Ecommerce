@@ -17,7 +17,7 @@ function GroupProducts() {
   }
 
   const handleBtnPrev = () => {
-    setCurrentIndex(currentIndex - widthOfSlider / 6)
+    setCurrentIndex((currentIndex - widthOfSlider / 6) < 0 ? 0 : currentIndex - widthOfSlider / 6)
   }
 
 

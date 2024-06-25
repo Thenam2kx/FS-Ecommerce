@@ -1,26 +1,52 @@
+import { useState, useEffect, useRef } from 'react'
 
+import { BannerData } from '~/fetch-data/BannerData'
 
 function Slider() {
+  const slideRef = useRef(null)
+  const [nextSlide, setNextSlide] = useState(0)
+  const [prevSlide, setPrevSlide] = useState(0)
+
+  useEffect(() => {
+
+  }, [])
+
+  const handleNextSlide = () => {
+    setNextSlide(nextSlide + 1)
+    // console.log('next');
+  }
+
+  const handlePrevSlide = () => {
+    setPrevSlide(prevSlide - 1)
+    // console.log('prev');
+  }
+
+
   return (
     <section className="w-full h-fit rounded-lg bg-white">
       <div className="p-4">
         <div className="relative overflow-hidden">
-          <div className="flex items-center">
+          <div ref={slideRef} className="flex items-center">
+            {
+              BannerData.map((item) => (
+                <div className="min-w-full flex items-center gap-4" key={item.id}>
+                  {
+                    item?.items.map((itemChild) => (
+                      <div key={itemChild.id}>
+                        <a href={itemChild.url}>
+                          <img className="rounded-lg" src={itemChild.thumbnail_url} alt="" />
+                        </a>
+                      </div>
+                    ))
+                  }
 
-            <div className="min-w-full flex items-center gap-4">
-              <div><a href=""><img className="rounded-lg" src="https://salt.tikicdn.com/cache/w750/ts/tikimsp/91/46/16/2979cded647ea023aa267115cb2669c7.jpg.webp" alt="" /></a></div>
-              <div><a href=""><img className="rounded-lg" src="https://salt.tikicdn.com/cache/w750/ts/tikimsp/99/12/ee/d8778d27aa18889caf1e5a38ecd8f368.jpg.webp" alt="" /></a></div>
-            </div>
-
-            <div className="min-w-full flex items-center gap-4">
-              <div><a href=""><img className="rounded-lg" src="https://salt.tikicdn.com/cache/w750/ts/tikimsp/91/46/16/2979cded647ea023aa267115cb2669c7.jpg.webp" alt="" /></a></div>
-              <div><a href=""><img className="rounded-lg" src="https://salt.tikicdn.com/cache/w750/ts/tikimsp/99/12/ee/d8778d27aa18889caf1e5a38ecd8f368.jpg.webp" alt="" /></a></div>
-            </div>
-
+                </div>
+              ))
+            }
           </div>
 
           <div className="">
-            <div className="absolute top-1/2 left-2 -translate-y-1/2 p-2 rounded-full shadow-lg cursor-pointer bg-white">
+            <div onClick={handlePrevSlide} className="absolute top-1/2 left-2 -translate-y-1/2 p-2 rounded-full shadow-lg cursor-pointer bg-white">
               <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   fillRule="evenodd"
@@ -32,7 +58,7 @@ function Slider() {
                 ></path>
               </svg>
             </div>
-            <div className="absolute top-1/2 right-2 -translate-y-1/2 p-2 rounded-full shadow-lg cursor-pointer bg-white">
+            <div onClick={handleNextSlide} className="absolute top-1/2 right-2 -translate-y-1/2 p-2 rounded-full shadow-lg cursor-pointer bg-white">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 18" fill="none">
                 <path
                   fillRule="evenodd"
@@ -47,9 +73,11 @@ function Slider() {
           </div>
 
           <div className="flex items-center justify-center gap-2 mt-3">
-            <span className="w-5 h-[2px] inline-block bg-slate-500 cursor-pointer rounded-md"></span>
-            <span className="w-5 h-[2px] inline-block bg-slate-500 cursor-pointer rounded-md"></span>
-            <span className="w-5 h-[2px] inline-block bg-slate-500 cursor-pointer rounded-md"></span>
+            {
+              BannerData.map((item) => (
+                <span key={item.id} className="w-5 h-[2px] inline-block bg-slate-500 cursor-pointer rounded-md"></span>
+              ))
+            }
           </div>
         </div>
 
