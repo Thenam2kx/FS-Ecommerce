@@ -12,7 +12,7 @@ function App() {
       <main className="pt-4">
         <div className="container mx-auto flex gap-4">
           <Sidebar />
-          <Category />
+          <Home />
         </div>
       </main>
     </>

@@ -39,12 +39,12 @@ function Category() {
         </section>
 
         <article className='flex flex-col gap-3 px-4 py-3 rounded-lg bg-white'>
-          <section className='text-base font-semibold'>Tất cả sản phẩm</section>
+          <section className='text-base font-semibold text-red-600 lg:text-blue-400 md:text-orange-600'>Tất cả sản phẩm</section>
 
           <section className=''>
 
           </section>
-          
+
           <section className=''></section>
         </article>
       </div>
